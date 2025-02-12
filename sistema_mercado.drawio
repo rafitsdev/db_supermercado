@@ -511,7 +511,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="MehZxR0ri4t-mRPPWg_Q-155" value="Itens_Venda" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="MehZxR0ri4t-mRPPWg_Q-155" value="Produtos_Venda" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="300" y="255" width="140" height="70" as="geometry" />
         </mxCell>
         <mxCell id="MehZxR0ri4t-mRPPWg_Q-162" value="quantidade" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
