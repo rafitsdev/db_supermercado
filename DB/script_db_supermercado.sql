@@ -130,8 +130,16 @@ CREATE TABLE IF NOT EXISTS `db_supermercado`.`tbl_cupons_fiscais` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `data_emissao` DATE NOT NULL,
   `valor_total` DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (`id`))
+  `fk_venda` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_cupom_venda`
+    FOREIGN KEY (`fk_venda`)
+    REFERENCES `db_supermercado`.`tbl_vendas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+SHOW WARNINGS;
+CREATE INDEX `idx_fk_cupom_venda` ON `db_supermercado`.`tbl_cupons_fiscais` (`fk_venda` ASC) VISIBLE;
 SHOW WARNINGS;
 
 
@@ -143,7 +151,6 @@ CREATE TABLE IF NOT EXISTS `db_supermercado`.`tbl_vendas` (
   `valor_total` DECIMAL(6,2) NOT NULL,
   `fk_cliente` INT NULL,
   `fk_colaborador` INT NOT NULL,
-  `fk_cupom_fiscal` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_cliente`
     FOREIGN KEY (`fk_cliente`)
@@ -154,19 +161,12 @@ CREATE TABLE IF NOT EXISTS `db_supermercado`.`tbl_vendas` (
     FOREIGN KEY (`fk_colaborador`)
     REFERENCES `db_supermercado`.`tbl_colaborador` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cupom_fiscal`
-    FOREIGN KEY (`fk_cupom_fiscal`)
-    REFERENCES `db_supermercado`.`tbl_cupons_fiscais` (`id`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 SHOW WARNINGS;
 CREATE INDEX `idx_fk_cliente` ON `db_supermercado`.`tbl_vendas` (`fk_cliente` ASC) VISIBLE;
 SHOW WARNINGS;
 CREATE INDEX `idx_fk_colaborador` ON `db_supermercado`.`tbl_vendas` (`fk_colaborador` ASC) VISIBLE;
-SHOW WARNINGS;
-CREATE INDEX `idx_fk_cupom_fiscal` ON `db_supermercado`.`tbl_vendas` (`fk_cupom_fiscal` ASC) VISIBLE;
 SHOW WARNINGS;
 
 
