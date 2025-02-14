@@ -169,12 +169,12 @@ SHOW WARNINGS;
 CREATE INDEX `idx_fk_colaborador` ON `db_supermercado`.`tbl_vendas` (`fk_colaborador` ASC) VISIBLE;
 SHOW WARNINGS;
 
-
+ALTER TABLE tbl_pagamentos CHANGE valor_pago valor_pago DECIMAL(10,2) NOT NULL;
 DROP TABLE IF EXISTS `db_supermercado`.`tbl_pagamentos` ;
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `db_supermercado`.`tbl_pagamentos` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `valor_pago` INT NOT NULL,
+  `valor_pago` DECIMAL(10,2) NOT NULL,
   `fk_forma_pagamento` INT NOT NULL,
   `fk_venda` INT NOT NULL,
   PRIMARY KEY (`id`),
